@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Hello Java</display-name>
+	
+	<filter>
+	<filter-name>Custom Login Filter</filter-name>
+	<filter-class>org.fiters.CustomFilter2</filter-class>
+	<init-param>
+		<param-name>serverName</param-name>
+		<param-value>https://srikanth.labs.com:9443</param-value>
+	</init-param>
+	<init-param>
+			<param-name>redirectAfterValidation</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+		<param-name>userNameLabel</param-name>
+		<param-value>userName</param-value>
+	</init-param><init-param>
+		<param-name>passwordLabel</param-name>
+		<param-value>userPassword</param-value>
+	</init-param><init-param>
+		<param-name>casServerUrl</param-name>
+		<param-value>https://srikanth.labs.com:8443/cas-web</param-value>
+	</init-param><init-param>
+		<param-name>serviceUrl</param-name>
+		<param-value>https://srikanth.labs.com:9443/hello-java-1.0/login</param-value>
+	</init-param>
+	</filter>
+	
+	
+
+
+<filter-mapping>
+		<filter-name>Custom Login Filter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+	
+
+
+
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>org.cloudfoundry.samples.HelloServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SecondServlet</servlet-name>
+		<servlet-class>org.cloudfoundry.samples.SecondServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SecondServlet</servlet-name>
+		<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	    <servlet-name>restlet</servlet-name>
+	    <servlet-class>org.restlet.ext.spring.RestletFrameworkServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+	 
+	<servlet-mapping>
+	    <servlet-name>restlet</servlet-name>
+	    <url-pattern>/v1/*</url-pattern>
+	</servlet-mapping>
+	
+	
+
+	
+	
+</web-app>
