@@ -10,7 +10,7 @@
 	<filter-class>org.fiters.CustomFilter2</filter-class>
 	<init-param>
 		<param-name>serverName</param-name>
-		<param-value>https://srikanth.labs.com:9443</param-value>
+		<param-value>{place server url}</param-value>
 	</init-param>
 	<init-param>
 			<param-name>redirectAfterValidation</param-name>
@@ -18,33 +18,40 @@
 		</init-param>
 		<init-param>
 		<param-name>userNameLabel</param-name>
-		<param-value>userName</param-value>
+		<param-value>{user name label in the login form}</param-value>
 	</init-param><init-param>
 		<param-name>passwordLabel</param-name>
-		<param-value>userPassword</param-value>
+		<param-value>{password name label in the login form}</param-value>
 	</init-param><init-param>
 		<param-name>casServerUrl</param-name>
-		<param-value>https://srikanth.labs.com:8443/cas-web</param-value>
+		<param-value>{cas server url}</param-value>
 	</init-param><init-param>
 		<param-name>serviceUrl</param-name>
-		<param-value>https://srikanth.labs.com:9443/hello-java-1.0/login</param-value>
+		<param-value>{service url for logging in }</param-value>
 	</init-param>
 	</filter>
 	
 	
-
+<filter>
+	<filter-name>Custom Logout Filter</filter-name>
+	<filter-class>org.fiters.CustomLogoutFilter</filter-class>
+	</filter>
 
 <filter-mapping>
 		<filter-name>Custom Login Filter</filter-name>
 		<url-pattern>*</url-pattern>
 	</filter-mapping>
 	
+	<filter-mapping>
+		<filter-name>Custom Logout Filter</filter-name>
+		<url-pattern>/logout</url-pattern>
+	</filter-mapping>
 
 
 
 	<servlet>
 		<servlet-name>HelloServlet</servlet-name>
-		<servlet-class>org.cloudfoundry.samples.HelloServlet</servlet-class>
+		<servlet-class>org.pramati.samples.HelloServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -52,14 +59,16 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>SecondServlet</servlet-name>
-		<servlet-class>org.cloudfoundry.samples.SecondServlet</servlet-class>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>org.pramati.samples.LogoutServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>SecondServlet</servlet-name>
-		<url-pattern>/test</url-pattern>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
+	
+	
 	
 	
 	<servlet>

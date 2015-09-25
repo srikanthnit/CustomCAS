@@ -29,7 +29,7 @@ public class CASTicketUtil {
      * @return
      * @throws IOException
      */
-    private static String getServiceGrantingTicket(String TGT, String serviceUrl, String casUrl) throws IOException {
+    public static String getServiceGrantingTicket(String TGT, String serviceUrl, String casUrl) throws IOException {
         Map<String, Object> params = new LinkedHashMap<String, Object>();
         params.put("service", serviceUrl);
         params.put("method", "POST");

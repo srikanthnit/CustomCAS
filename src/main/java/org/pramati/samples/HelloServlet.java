@@ -1,4 +1,4 @@
-package org.cloudfoundry.samples;
+package org.pramati.samples;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SecondServlet extends HttpServlet {
+public class HelloServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = response.getWriter();
         response.setContentType("text/html");
         if (request.getSession().getAttribute("userName") != null) {
-            pw.println("Login Success...from second servlet");
+            pw.println("Login Success...!");
         } else {
             response.sendRedirect("index.html");
         }
@@ -25,9 +28,9 @@ public class SecondServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
         response.setContentType("text/html");
         if (request.getSession().getAttribute("userName") != null) {
-            pw.println("Login Success...from second servlet");
+            pw.println("Login Success...!");
         } else {
-            response.sendRedirect("login.html");
+            response.sendRedirect("index.html");
         }
 
         pw.close();
